@@ -2,35 +2,31 @@ name: Ruby Gem
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   build:
-    name: Build and Publish Gem
+    name: Build + Publish
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
+    - uses: actions/checkout@v4
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.1  # Update to the desired Ruby version
+        ruby-version: 3.1
 
     - name: Build the gem
       run: gem build vulture.gemspec
       env:
         GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
 
-    - name: Publish to GitHub Packages
+    - name: Publish to GitHub Package Registry
       run: |
         mkdir -p $HOME/.gem
         touch $HOME/.gem/credentials
