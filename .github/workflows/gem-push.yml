@@ -16,25 +16,26 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Ruby 2.6
-    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
-    # change this to (see https://github.com/ruby/setup-ruby#versioning):
-    # uses: ruby/setup-ruby@v1
-      uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.1.9
+        ruby-version: 3.1  # Update to the desired Ruby version
 
-    - name: Publish to GPR
+    - name: Build the gem
+      run: |
+        gem build vulture.gemspec
+      env:
+        GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}  # Ensure you have this secret
+
+    - name: Publish to GitHub Package Registry
       run: |
         mkdir -p $HOME/.gem
         touch $HOME/.gem/credentials
         chmod 0600 $HOME/.gem/credentials
         printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-        gem build *.gemspec
-        gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
+        gem push --key github --host https://rubygems.pkg.github.com/${{ github.repository_owner }} vulture-1.0.0.gem
       env:
-        GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
-        OWNER: ${{ github.repository_owner }}
+        GEM_HOST_API_KEY: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Publish to RubyGems
       run: |
@@ -42,7 +43,6 @@ jobs:
         touch $HOME/.gem/credentials
         chmod 0600 $HOME/.gem/credentials
         printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-        gem build *.gemspec
-        gem push *.gem
+        gem push vulture-1.0.0.gem
       env:
-        GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
+        GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_AUTH_TOKEN }}
