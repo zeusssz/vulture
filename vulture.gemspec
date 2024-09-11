@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['zeusssz']
   spec.files         = Dir['lib/**/*.rb'] + ['vulture.rb', 'config.yml', 'templates/report_template.html.erb']
   spec.bindir        = 'bin'
-  spec.executables   = [vulture]
+  spec.executables   = ['vulture']
   spec.require_paths = ['lib']
 
   spec.add_dependency 'capybara', '~> 3.35'
