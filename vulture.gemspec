@@ -4,8 +4,9 @@ Gem::Specification.new do |spec|
   spec.summary       = 'A CLI tool for automated visual regression testing by comparing screenshots of web pages.'
   spec.description   = 'Vulture captures and compares screenshots of web pages at multiple resolutions, highlighting visual differences.'
   spec.authors       = ['zeusssz']
-  spec.files         = Dir['vulture.rb', 'config.yml', 'templates/report_template.html.erb'] + Dir['screenshots/**/*']
-  spec.executables   = ['vulture']
+  spec.files         = Dir['lib/**/*.rb'] + ['vulture.rb', 'config.yml', 'templates/report_template.html.erb']
+  spec.bindir        = 'bin'
+  spec.executables   = [vulture]
   spec.require_paths = ['lib']
 
   spec.add_dependency 'capybara', '~> 3.35'
