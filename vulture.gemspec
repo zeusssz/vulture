@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = 'vulture'
-  spec.version       = '1.0.0a'
+  spec.version       = '1.0.1'
   spec.summary       = 'A CLI tool for automated visual regression testing by comparing screenshots of web pages.'
   spec.description   = 'Vulture captures and compares screenshots of web pages at multiple resolutions, highlighting visual differences.'
   spec.authors       = ['zeusssz']
