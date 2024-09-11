@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 require 'capybara'
 require 'capybara/dsl'
 require 'selenium-webdriver'
@@ -25,6 +26,9 @@ end
 def compare_images(img1_path, img2_path, diff_output_path, threshold)
   img1 = ChunkyPNG::Image.from_file(img1_path)
   img2 = ChunkyPNG::Image.from_file(img2_path)
+
+  raise 'Images are not the same size!' unless img1.dimension == img2.dimension
+
   diff = ChunkyPNG::Image.new(img1.width, img1.height, ChunkyPNG::Color::TRANSPARENT)
   diff_count = 0
 
@@ -38,7 +42,7 @@ def compare_images(img1_path, img2_path, diff_output_path, threshold)
   end
 
   diff.save(diff_output_path)
-  diff_percentage = (diff_count.to_f / (img1.width * img1.height)) * 100
+  diff_percentage = (diff_count.to_f / (img1.pixels.length)) * 100
 
   puts "Comparison complete: #{diff_count} pixels differ (#{diff_percentage.round(2)}%)."
   exit(1) if diff_percentage > threshold
@@ -50,25 +54,27 @@ def generate_report(diffs)
   File.open('report.html', 'w') { |file| file.write(renderer.result(binding)) }
 end
 
-if ARGV.length != 2
-  puts "Usage: vulture <url1> <url2>"
-  exit
+def formatted_path(base, resolution, url)
+  "#{base}/#{resolution}_#{url.gsub(%r{https?://}, '').gsub('/', '_')}.png"
 end
 
-url1 = ARGV[0]
-url2 = ARGV[1]
+if ARGV.length != 2
+  puts "Usage: vulture <url1> <url2>"
+  exit(1)
+end
 
-diffs = []
-config['resolutions'].each do |resolution|
-  baseline_path = "screenshots/baseline/#{resolution}_#{url1.gsub(%r{https?://}, '').gsub('/', '_')}.png"
-  latest_path = "screenshots/latest/#{resolution}_#{url2.gsub(%r{https?://}, '').gsub('/', '_')}.png"
-  diff_path = "screenshots/diff/#{resolution}_#{url1.gsub(%r{https?://}, '').gsub('/', '_')}_diff.png"
+url1, url2 = ARGV
+
+diffs = config['resolutions'].map do |resolution|
+  baseline_path = formatted_path('screenshots/baseline', resolution, url1)
+  latest_path = formatted_path('screenshots/latest', resolution, url2)
+  diff_path = formatted_path('screenshots/diff', resolution, "#{url1}_diff")
 
   capture_screenshot(url1, resolution, baseline_path)
   capture_screenshot(url2, resolution, latest_path)
 
   compare_images(baseline_path, latest_path, diff_path, config['threshold'])
-  diffs << { url: url1, resolution: resolution, diff_path: diff_path }
+  { url: url1, resolution: resolution, diff_path: diff_path }
 end
 
 generate_report(diffs)
