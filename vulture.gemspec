@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'Vulture captures and compares screenshots of web pages at multiple resolutions, highlighting visual differences.'
   spec.authors       = ['zeusssz']
   spec.files         = Dir['lib/**/*.rb'] + ['vulture.rb', 'config.yml', 'templates/report_template.html.erb']
-  spec.executables   = ['vulture']
+  spec.executables   = ['vulture.rb']
   spec.require_paths = ['lib']
 
   spec.add_dependency 'capybara', '~> 3.35'
