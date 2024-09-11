@@ -1,4 +1,6 @@
 # ![VultSmall](https://github.com/user-attachments/assets/8788f26e-76d8-471f-b341-5de48dfcc088) Vulture
+![Stars](https://img.shields.io/github/stars/zeusssz/vulture?style=flat-square)  ![Forks](https://img.shields.io/github/forks/zeusssz/vulture?style=flat-square)  ![Issues](https://img.shields.io/github/issues/zeusssz/vulture?style=flat-square)  ![License](https://img.shields.io/github/license/zeusssz/vulture?style=flat-square)  ![Last Commit](https://img.shields.io/github/last-commit/zeusssz/vulture?style=flat-square)
+
 
 **Vulture** is a powerful CLI tool designed to automate visual regression testing by comparing screenshots of web pages. Vulture captures screenshots of two URLs at multiple resolutions and generates a "diff" image highlighting visual differences. It's ideal for developers, testers, and designers who want to ensure consistency across different versions of a website or between different environments.
 
@@ -21,6 +23,14 @@ To install the latest version from RubyGems, run:
 ```sh
 gem install vulture
 ```
+
+To make the note more concise and clear, here is a revised version:
+
+>[!NOTE] 
+> To install a previous version of Vulture, run:  
+> ```
+> gem install vulture -v [version-number] (e.g., 1.0.0)
+> ```
 
 ### 2. Install from GitHub Packages
 
@@ -62,3 +72,6 @@ vulture https://example.com https://example.com/about
 ## License
 
 **Vulture** is released under the MIT License. See the [LICENSE](LICENSE) file for details.
+---
+>[!IMPORTANT]
+Vulture is in it's infancy. meaning bugs will be present! File issues/suggestions to improve Vulture in the issues tab, and **report vulnerabilities to `roboxer_` on discord**, and *DO NOT* make an issue for those.
