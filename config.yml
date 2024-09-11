@@ -1,0 +1,7 @@
+# config.yml
+resolutions:
+  - '1024x768'
+  - '1280x800'
+  - '1920x1080'
+
+threshold: 1.0  # % of different pixels that triggers a failure
