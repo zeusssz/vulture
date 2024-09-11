@@ -1,4 +1,4 @@
-### Vulture
+# Vulture
 
 **Vulture** is a powerful CLI tool designed to automate the process of visual regression testing by comparing screenshots of web pages. Inspired by BBC's Wraith, Vulture captures screenshots of two URLs at multiple resolutions and generates a "diff" image that highlights visual differences between the pages. It's ideal for developers, testers, and designers who want to ensure consistency across different versions of a website or between different environments.
 
