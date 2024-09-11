@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vulture Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .screenshot { display: inline-block; margin: 10px; }
+    .diff { border: 2px solid red; }
+  </style>
+</head>
+<body>
+  <h1>Vulture Screenshot Comparison Report</h1>
+  <% diffs.each do |diff| %>
+    <div class="screenshot">
+      <h2><%= diff[:url] %> at <%= diff[:resolution] %></h2>
+      <img src="<%= diff[:diff_path] %>" alt="Diff for <%= diff[:url] %> at <%= diff[:resolution] %>" class="diff">
+    </div>
+  <% end %>
+</body>
+</html>
