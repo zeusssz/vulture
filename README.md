@@ -1,5 +1,4 @@
-
-# ![VultSmall](https://github.com/user-attachments/assets/8788f26e-76d8-471f-b341-5de48dfcc088) *Vulture*
+# ![VultTiny](https://github.com/user-attachments/assets/cff98e00-09d9-4b1c-8acc-49ad6b6462e8) *Vulture*
 
 ![Stars](https://img.shields.io/github/stars/zeusssz/vulture?style=flat-square) ![Forks](https://img.shields.io/github/forks/zeusssz/vulture?style=flat-square) ![Issues](https://img.shields.io/github/issues/zeusssz/vulture?style=flat-square) ![License](https://img.shields.io/github/license/zeusssz/vulture?style=flat-square) ![Last Commit](https://img.shields.io/github/last-commit/zeusssz/vulture?style=flat-square)
 
