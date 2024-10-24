@@ -2,7 +2,7 @@
 
 ![Stars](https://img.shields.io/github/stars/zeusssz/vulture?style=flat-square) ![Forks](https://img.shields.io/github/forks/zeusssz/vulture?style=flat-square) ![Issues](https://img.shields.io/github/issues/zeusssz/vulture?style=flat-square) ![License](https://img.shields.io/github/license/zeusssz/vulture?style=flat-square) ![Last Commit](https://img.shields.io/github/last-commit/zeusssz/vulture?style=flat-square)
 
-**Vulture** is a powerful CLI tool designed to automate visual regression testing by comparing screenshots of web pages. Vulture captures screenshots of two URLs at multiple resolutions and generates a "diff" image highlighting visual differences. It's ideal for developers, testers, and designers who want to ensure consistency across different versions of a website or between different environments.
+**Vulture** is a CLI tool designed to automate visual regression testing by comparing screenshots of web pages. Vulture captures screenshots of two URLs at multiple resolutions and generates a "diff" image highlighting visual differences. It's ideal for developers, testers, and designers who want to ensure consistency across different versions of a website or between different environments.
 
 ## Key Features
 
